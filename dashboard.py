@@ -13,8 +13,7 @@ class IMS:
         #title
         # Open and resize the image to match heading size
         original_image = Image.open("Images/cart.jpg")
-        
-        
+
         resized_image = original_image.resize((47, 47), Image.Resampling.LANCZOS)
         self.icon_title = ImageTk.PhotoImage(resized_image)
         
