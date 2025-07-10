@@ -280,27 +280,15 @@ class employeeClass:
     
     # Search for records and display them
     def search(self):
-        self.clear()
         con = sqlite3.connect(database=r'ims.db')
         cur = con.cursor()
         try:
-            if self.var_searchby.get() == "Select":
+            if self.var_searchby.get() == "Select" and self.var_searchtxt.get() == "":
                 messagebox.showerror("Error", "Select Search By option", parent=self.root)
             elif self.var_searchtxt.get() == "":
                 messagebox.showerror("Error", "Search input should be required", parent=self.root)
             else:
-                allowed_columns = {
-                    "Email": "email",
-                    "Name": "name",
-                    "Contact": "contact"
-                }
-
-                col = self.var_searchby.get()
-                if col not in allowed_columns:
-                    messagebox.showerror("Error", "Invalid Search Field", parent=self.root)
-                    return
-
-                query = f"SELECT * FROM employee WHERE {allowed_columns[col]} LIKE ?"
+                query = f"SELECT * FROM employee WHERE {self.var_searchby.get()} LIKE ?"
                 cur.execute(query, ('%' + self.var_searchtxt.get() + '%',))
 
                 rows = cur.fetchall()
