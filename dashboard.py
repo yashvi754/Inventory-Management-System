@@ -1,7 +1,13 @@
 import tkinter as tk
 from tkinter import Toplevel
 from PIL import Image, ImageTk
+import os
 from employee import employeeClass
+from supplier import supplierClass
+from category import categoryClass
+from products import productsClass
+from sales import salesClass
+from login import Login_System
 
 class IMS:
     def __init__(self, root):
@@ -24,7 +30,7 @@ class IMS:
             title = tk.Label(self.root, text="Inventory Management System", font=("times new roman",35,"bold"), bg="white", fg="black", anchor="w", padx=10, pady=10)
 
         #====button_logout=====#
-        btn_logout=tk.Button(self.root, text="Logout", font=("times new roman",15,"bold"), bg="#f56464", fg="white", cursor="hand2").place(x=1425, y=20)
+        btn_logout=tk.Button(self.root, text="Logout", command=self.logout, font=("times new roman",15,"bold"), bg="#f56464", fg="white", cursor="hand2").place(x=1425, y=20)
 
         #====label_clock=====#
         self.lbl_clock=tk.Label(self.root, text="Welcome to Inventory Management System \t\t (Date: DD/MM/YYYY) \t\t (Time: HH:MM:SS)", font=("times new roman",15), bg="#b2d8d8", fg="#008080", anchor="w", padx=10, pady=10)
@@ -60,10 +66,10 @@ class IMS:
         arrow_icon = "⟶"  # Unicode right arrow
 
         btn_employee=tk.Button(menu_container, text=f"{arrow_icon} Employee", command=self.employee, font=("times new roman", 17), bg="#b2d8d8", fg="#008080", cursor="hand2", anchor="w", height=2).pack(side=tk.TOP, fill=tk.X, pady=5)
-        btn_supplier=tk.Button(menu_container, text=f"{arrow_icon} Supplier", font=("times new roman", 17), bg="#b2d8d8", fg="#008080", cursor="hand2", anchor="w", height=2).pack(side=tk.TOP, fill=tk.X, pady=5)
-        btn_category=tk.Button(menu_container, text=f"{arrow_icon} Category", font=("times new roman", 17), bg="#b2d8d8", fg="#008080", cursor="hand2", anchor="w", height=2).pack(side=tk.TOP, fill=tk.X, pady=5)
-        btn_products=tk.Button(menu_container, text=f"{arrow_icon} Products", font=("times new roman", 17), bg="#b2d8d8", fg="#008080", cursor="hand2", anchor="w", height=2).pack(side=tk.TOP, fill=tk.X, pady=5)
-        btn_sales=tk.Button(menu_container, text=f"{arrow_icon} Sales", font=("times new roman", 17), bg="#b2d8d8", fg="#008080", cursor="hand2", anchor="w", height=2).pack(side=tk.TOP, fill=tk.X, pady=5)
+        btn_supplier=tk.Button(menu_container, text=f"{arrow_icon} Supplier", command=self.supplier, font=("times new roman", 17), bg="#b2d8d8", fg="#008080", cursor="hand2", anchor="w", height=2).pack(side=tk.TOP, fill=tk.X, pady=5)
+        btn_category=tk.Button(menu_container, text=f"{arrow_icon} Category", command=self.category, font=("times new roman", 17), bg="#b2d8d8", fg="#008080", cursor="hand2", anchor="w", height=2).pack(side=tk.TOP, fill=tk.X, pady=5)
+        btn_products=tk.Button(menu_container, text=f"{arrow_icon} Products", command=self.products, font=("times new roman", 17), bg="#b2d8d8", fg="#008080", cursor="hand2", anchor="w", height=2).pack(side=tk.TOP, fill=tk.X, pady=5)
+        btn_sales=tk.Button(menu_container, text=f"{arrow_icon} Sales", command=self.sales, font=("times new roman", 17), bg="#b2d8d8", fg="#008080", cursor="hand2", anchor="w", height=2).pack(side=tk.TOP, fill=tk.X, pady=5)
         btn_exit=tk.Button(menu_container, text=f"{arrow_icon} Exit", font=("times new roman", 17), bg="#b2d8d8", fg="#008080", cursor="hand2", anchor="w", height=2).pack(side=tk.TOP, fill=tk.X, pady=5)
 
         #=====content=====#
@@ -97,6 +103,26 @@ class IMS:
     def employee(self):
         self.new_win = Toplevel(self.root)
         self.new_obj = employeeClass(self.new_win)
+
+    def supplier(self):
+        self.new_win = Toplevel(self.root)
+        self.new_obj = supplierClass(self.new_win)
+
+    def category(self):
+        self.new_win = Toplevel(self.root)
+        self.new_obj = categoryClass(self.new_win)
+
+    def products(self):
+        self.new_win = Toplevel(self.root)
+        self.new_obj = categoryClass(self.new_win) 
+    
+    def sales(self):
+        self.new_win = Toplevel(self.root)
+        self.new_obj = salesClass(self.new_win)
+
+    def logout(self):
+        self.root.destroy()
+        os.system("python login.py")
 
 
 if __name__=="__main__":
