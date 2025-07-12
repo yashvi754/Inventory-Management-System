@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 from tkinter import Toplevel
 from PIL import Image, ImageTk
 import os
@@ -8,6 +9,8 @@ from category import categoryClass
 from products import productsClass
 from sales import salesClass
 from login import Login_System
+import sqlite3
+import time
 
 class IMS:
     def __init__(self, root):
@@ -98,6 +101,9 @@ class IMS:
         
         footer_text = tk.Label(footer_frame, text="© 2025 Inventory Management System. All rights reserved.", font=("times new roman", 10), bg="#008080", fg="white")
         footer_text.pack(side=tk.BOTTOM, pady=5)
+
+        # Start the content and clock updates loop
+        self.update_content()
 #========================================================================================#
 
     def employee(self):
@@ -123,6 +129,40 @@ class IMS:
     def logout(self):
         self.root.destroy()
         os.system("python login.py")
+
+    def update_content(self):
+        con = sqlite3.connect(database=r'ims.db')
+        cur = con.cursor()
+        try:
+            cur.execute("select * from product")
+            product = cur.fetchall()
+            self.lbl_products.config(text=f'Total Products\n[ {str(len(product))} ]')
+
+            cur.execute("select * from supplier")
+            supplier = cur.fetchall()
+            self.lbl_supplier.config(text=f'Total Suppliers\n[ {str(len(supplier))} ]')
+
+            cur.execute("select * from category")
+            category = cur.fetchall()
+            self.lbl_category.config(text=f'Total Category\n[ {str(len(category))} ]')
+            
+            cur.execute("select * from employee")
+            employee = cur.fetchall()
+            self.lbl_employee.config(text=f'Total Employees\n[ {str(len(employee))} ]')
+
+            bill = len(os.listdir('bills'))
+            self.lbl_sales.config(text=f'Total Sales\n[ {str(bill)} ]')
+
+            # Update Time and Date
+            time_ = time.strftime("%I:%M:%S")
+            date_ = time.strftime("%d-%m-%Y")
+            self.lbl_clock.config(text=f"Welcome to Inventory Management System\t\t Date: {str(date_)}\t\t Time: {str(time_)}")
+        
+            self.lbl_clock.after(200, self.update_content) # Schedule this function to run again after 200ms
+
+        except Exception as ex:
+            messagebox.showerror("Error", f"Error due to : {str(ex)}", parent=self.root)
+
 
 
 if __name__=="__main__":
