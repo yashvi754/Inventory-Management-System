@@ -27,58 +27,59 @@ class productsClass:
         self.var_qty = StringVar()
         self.var_status = StringVar()
 
-        #============Product Frame=================
+        #============Product Frame================
         product_Frame = Frame(self.root, bd=2, relief=RIDGE, bg="white")
         product_Frame.place(x=10, y=10, width=450, height=480)
 
         #============Title========================
-        title = Label(product_Frame, text="Manage Product Details", font=("goudy old style", 18), bg="#008080", fg="white")
+        title = Label(product_Frame, text="Manage Product Details", font=("times new roman", 18), bg="#008080", fg="white")
         title.pack(side=TOP, fill=X)
 
         #============Column 1=====================
-        lbl_category = Label(product_Frame, text="Category", font=("goudy old style", 18), bg="white").place(x=30, y=60)
-        lbl_supplier = Label(product_Frame, text="Supplier", font=("goudy old style", 18), bg="white").place(x=30, y=110)
-        lbl_product_name = Label(product_Frame, text="Name", font=("goudy old style", 18), bg="white").place(x=30, y=160)
-        lbl_price = Label(product_Frame, text="Price", font=("goudy old style", 18), bg="white").place(x=30, y=210)
-        lbl_quantity = Label(product_Frame, text="Quantity", font=("goudy old style", 18), bg="white").place(x=30, y=260)
-        lbl_status = Label(product_Frame, text="Status", font=("goudy old style", 18), bg="white").place(x=30, y=310)
+        lbl_category = Label(product_Frame, text="Category", font=("times new roman", 18), bg="white").place(x=30, y=60)
+        lbl_supplier = Label(product_Frame, text="Supplier", font=("times new roman", 18), bg="white").place(x=30, y=110)
+        lbl_product_name = Label(product_Frame, text="Name", font=("times new roman", 18), bg="white").place(x=30, y=160)
+        lbl_price = Label(product_Frame, text="Price", font=("times new roman", 18), bg="white").place(x=30, y=210)
+        lbl_quantity = Label(product_Frame, text="Quantity", font=("times new roman", 18), bg="white").place(x=30, y=260)
+        lbl_status = Label(product_Frame, text="Status", font=("times new roman", 18), bg="white").place(x=30, y=310)
 
-        #============Column 2=====================
-        cmb_cat = ttk.Combobox(product_Frame, textvariable=self.var_cat, values=self.cat_list, state='readonly', justify=CENTER, font=("goudy old style", 15))
+        cmb_cat = ttk.Combobox(product_Frame, textvariable=self.var_cat, values=self.cat_list, state='readonly', justify=CENTER, font=("times new roman", 15))
         cmb_cat.place(x=150, y=60, width=200)
         cmb_cat.current(0)
         
-        cmb_sup = ttk.Combobox(product_Frame, textvariable=self.var_sup, values=self.sup_list, state='readonly', justify=CENTER, font=("goudy old style", 15))
+        cmb_sup = ttk.Combobox(product_Frame, textvariable=self.var_sup, values=self.sup_list, state='readonly', justify=CENTER, font=("times new roman", 15))
         cmb_sup.place(x=150, y=110, width=200)
         cmb_sup.current(0)
 
-        txt_name = Entry(product_Frame, textvariable=self.var_name, font=("goudy old style", 15), bg="#b2d8d8").place(x=150, y=160, width=200)
-        txt_price = Entry(product_Frame, textvariable=self.var_price, font=("goudy old style", 15), bg="#b2d8d8").place(x=150, y=210, width=200)
-        txt_qty = Entry(product_Frame, textvariable=self.var_qty, font=("goudy old style", 15), bg="#b2d8d8").place(x=150, y=260, width=200)
+        txt_name = Entry(product_Frame, textvariable=self.var_name, font=("times new roman", 15), bg="#b2d8d8").place(x=150, y=160, width=200)
+        txt_price = Entry(product_Frame, textvariable=self.var_price, font=("times new roman", 15), bg="#b2d8d8").place(x=150, y=210, width=200)
+        txt_qty = Entry(product_Frame, textvariable=self.var_qty, font=("times new roman", 15), bg="#b2d8d8").place(x=150, y=260, width=200)
         
-        cmb_status = ttk.Combobox(product_Frame, textvariable=self.var_status, values=("Active", "Inactive"), state='readonly', justify=CENTER, font=("goudy old style", 15))
+        cmb_status = ttk.Combobox(product_Frame, textvariable=self.var_status, values=("Active", "Inactive"), state='readonly', justify=CENTER, font=("times new roman", 15))
         cmb_status.place(x=150, y=310, width=200)
         cmb_status.current(0)
         
-        #============Buttons====================
-        btn_add = Button(product_Frame, text="Save", command=self.add, font=("goudy old style", 15), bg="#008080", fg="white", cursor="hand2").place(x=10, y=400, width=100, height=40)
-        btn_update = Button(product_Frame, text="Update", command=self.update, font=("goudy old style", 15), bg="#008080", fg="white", cursor="hand2").place(x=120, y=400, width=100, height=40)
-        btn_delete = Button(product_Frame, text="Delete", command=self.delete, font=("goudy old style", 15), bg="#008080", fg="white", cursor="hand2").place(x=230, y=400, width=100, height=40)
-        btn_clear = Button(product_Frame, text="Clear", command=self.clear, font=("goudy old style", 15), bg="#008080", fg="white", cursor="hand2").place(x=340, y=400, width=100, height=40)
+        # Buttons
+        btn_add = Button(product_Frame, text="Save", command=self.add, font=("times new roman", 15), bg="#008080", fg="white", cursor="hand2").place(x=10, y=400, width=100, height=40)
+        btn_update = Button(product_Frame, text="Update", command=self.update, font=("times new roman", 15), bg="#008080", fg="white", cursor="hand2").place(x=120, y=400, width=100, height=40)
+        btn_delete = Button(product_Frame, text="Delete", command=self.delete, font=("times new roman", 15), bg="#008080", fg="white", cursor="hand2").place(x=230, y=400, width=100, height=40)
+        btn_clear = Button(product_Frame, text="Clear", command=self.clear, font=("times new roman", 15), bg="#008080", fg="white", cursor="hand2").place(x=340, y=400, width=100, height=40)
+
+        #============Column 2=====================
         
-        #============Search Frame=================
-        SearchFrame = LabelFrame(self.root, text="Search Product", font=("goudy old style", 12, "bold"), bd=2, relief=RIDGE, bg="white")
+        # Search Frame
+        SearchFrame = LabelFrame(self.root, text="Search Product", font=("times new roman", 12, "bold"), bd=2, relief=RIDGE, bg="white")
         SearchFrame.place(x=480, y=10, width=600, height=80)
         
-        #============Options======================
-        cmb_search = ttk.Combobox(SearchFrame, textvariable=self.var_searchby, values=("Select", "Category", "Supplier", "Name"), state='readonly', justify=CENTER, font=("goudy old style", 15))
+        # Options
+        cmb_search = ttk.Combobox(SearchFrame, textvariable=self.var_searchby, values=("Select", "Category", "Supplier", "Name"), state='readonly', justify=CENTER, font=("times new roman", 15))
         cmb_search.place(x=10, y=10, width=180)
         cmb_search.current(0)
         
-        txt_search = Entry(SearchFrame, textvariable=self.var_searchtxt, font=("goudy old style", 15), bg="#b2d8d8").place(x=200, y=10)
-        btn_search = Button(SearchFrame, text="Search", command=self.search, font=("goudy old style", 15), bg="#008080", fg="white", cursor="hand2").place(x=410, y=9, width=150, height=30)
+        txt_search = Entry(SearchFrame, textvariable=self.var_searchtxt, font=("times new roman", 15), bg="#b2d8d8").place(x=200, y=10)
+        btn_search = Button(SearchFrame, text="Search", command=self.search, font=("times new roman", 15), bg="#008080", fg="white", cursor="hand2").place(x=410, y=9, width=150, height=30)
         
-        #============Product Details (TreeView)================
+        # Product Details (TreeView)
         p_frame = Frame(self.root, bd=3, relief=RIDGE)
         p_frame.place(x=480, y=100, width=600, height=390)
         
@@ -181,31 +182,17 @@ class productsClass:
             messagebox.showerror("Error", f"Error due to : {str(ex)}", parent=self.root)
         con.close()
             
-    # CORRECTED get_data function to fix the bug
     def get_data(self, ev):
         f = self.product_table.focus()
         content = (self.product_table.item(f))
         row = content['values']
         self.var_pid.set(row[0])
-        self.var_sup.set(row[1])       # Swapped index
-        self.var_cat.set(row[2])       # Swapped index
+        self.var_sup.set(row[1])
+        self.var_cat.set(row[2])    
         self.var_name.set(row[3])
         self.var_price.set(row[4])
         self.var_qty.set(row[5])
         self.var_status.set(row[6])
-    
-    # Original (buggy) get_data function from the video
-    # def get_data(self, ev):
-    #     f = self.product_table.focus()
-    #     content = (self.product_table.item(f))
-    #     row = content['values']
-    #     self.var_pid.set(row[0])
-    #     self.var_cat.set(row[1])
-    #     self.var_sup.set(row[2])
-    #     self.var_name.set(row[3])
-    #     self.var_price.set(row[4])
-    #     self.var_qty.set(row[5])
-    #     self.var_status.set(row[6])
 
     def update(self):
         con = sqlite3.connect(database=r'ims.db')
@@ -290,7 +277,7 @@ class productsClass:
             messagebox.showerror("Error", f"Error due to : {str(ex)}", parent=self.root)
         con.close()
 
-
+    
 if __name__ == "__main__":
     root = Tk()
     obj = productsClass(root)

@@ -114,7 +114,7 @@ class IMS:
 
     def products(self):
         self.new_win = Toplevel(self.root)
-        self.new_obj = categoryClass(self.new_win) 
+        self.new_obj = productsClass(self.new_win) 
     
     def sales(self):
         self.new_win = Toplevel(self.root)

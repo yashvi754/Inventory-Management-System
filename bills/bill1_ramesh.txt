@@ -1,0 +1,5 @@
+Bill 1: For Ramesh
+-Potato: 2 kg X 25 = 50
+-Tomato: 1.5 kg X 30 = 45
+-Cabbage: 2 pcs X 15 = 30
+Total = 125
